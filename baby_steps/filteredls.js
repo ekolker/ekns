@@ -1,0 +1,16 @@
+var fs = require('fs');
+var path = require('path');
+
+// console.log(process.argv[3]);
+
+fs.readdir(process.argv[2], function (err, data)
+{
+  for (f in data)
+  {
+    // console.log(f, path.extname(data[f]))
+    if (path.extname(data[f]) == "." + process.argv[3])
+    {
+      console.log(data[f]);
+    }
+  }
+});
