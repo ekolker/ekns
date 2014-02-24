@@ -1,30 +1,24 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.filteredLS = function(dir, ext, func)
+module.exports = function(dir, ext, func)
 {
+  var val = [];
+
   fs.readdir(dir, function (err, data)
   {
-    data.forEach(function(func)
+    if (err)
+      return func(err);
+    data.forEach(function(filename, index)
     {
-      func(data);
-      // if (path.extname(data[f]) == "." + ext)
-//       {
-//         func(f);
-//       }
-    })
-  })
+      if (path.extname(filename) == "." + ext)
+      {
+        val.push(filename);
+      }
+      if (index == data.length - 1)
+      {
+        func(null, val);
+      }
+    });
+  });
 }
-
-
-
-//     for (f in data)
-//     {
-//       // console.log(f, path.extname(data[f]))
-//       if (path.extname(data[f]) == "." + ext)
-//       {
-//         func(f);
-//       }
-//     }
-//   });
-// }

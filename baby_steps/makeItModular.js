@@ -1,14 +1,19 @@
 var mim = require('./mim.js');
 
-// console.log(mim);
-
 var args = process.argv;
     dir = args[2];
     ext = args[3];
 
 // console.log(args)
 
-mim.filteredLS(dir, ext, function(data)
+mim(dir, ext, function(err, data)
 {
-  console.log(data);
+  data.forEach(function(filename)
+  {
+  console.log(filename);
+  // if (path.extname(filename) == "." + ext)
+  //   {
+  //     console.log(filename);
+  //   };
+  });
 });
