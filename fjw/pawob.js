@@ -1,12 +1,9 @@
-var slice = Array.prototype.slice
+var slice = Array.prototype.slice // this was actually a hint. they could have said so...
 
 module.exports = function logger(namespace)
 {
-  // console.log(console);
-  // foo = log.apply(namespace);
-  // foo('<-- that was the namespace');
-  console.log("foo");
-  return function(){;};
+  return function()
+  {
+    console.log.apply(console, [namespace].concat(Array.prototype.slice.call(arguments)));
+  }
 }
-
-console.log('wat', console.log.apply('lol'));
