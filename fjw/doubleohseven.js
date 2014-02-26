@@ -21,23 +21,3 @@ function Spy(target, method)
 
 module.exports = Spy;
 
-
-
-// var a = (
-//   function()
-//   {
-//       var original_a = a;
-
-//       if (condition) {
-//           return function() {
-//               new_code();
-//               original_a();
-//           }
-//       }
-//       else {
-//           return function() {
-//               original_a();
-//               other_new_code();
-//           }
-//       }
-//   })();
